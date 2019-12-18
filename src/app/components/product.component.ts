@@ -12,7 +12,8 @@ import {
 import { Product } from '../product.model';
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html'
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   constructor() {
@@ -28,6 +29,7 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
     console.log('Init');
   }
   ngDoCheck() {
+    // es como en componentDidMount
     console.log('Do check');
   }
   ngOnDestroy() {
@@ -37,4 +39,5 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   addCart() {
     this.productClicked.emit(this.product.id);
   }
+
 }
