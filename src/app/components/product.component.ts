@@ -21,6 +21,7 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   }
   @Input() product: Product;
   @Output() productClicked: EventEmitter<any> = new EventEmitter();
+  today = new Date();
   /*   ngOnChanges(changes: SimpleChanges) {
     console.log('Ya cambio');
     console.log(changes);
@@ -39,5 +40,4 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   addCart() {
     this.productClicked.emit(this.product.id);
   }
-
 }

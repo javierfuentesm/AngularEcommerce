@@ -1,7 +1,6 @@
-
-    <h3>{{product.title}}</h3>
-    <h3>{{product.price}}</h3>
-    <strong>{{product.description }}</strong>
-    <br>
-    <button (click)="addCart()">Agregar al carrito</button>
-
+<h3>{{ product.title | uppercase }}</h3>
+<h3>{{ product.price | currency }}</h3>
+<strong>{{ product.description | slice: 0:10 }}</strong>
+<p>{{ today | date:'medium' }}</p>
+<br />
+<button (click)="addCart()">Agregar al carrito</button>
