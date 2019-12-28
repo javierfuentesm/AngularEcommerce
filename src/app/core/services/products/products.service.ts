@@ -10,7 +10,7 @@ export class ProductsService {
       id: '1',
       image: 'assets/images/camiseta.png',
       title: 'Camiseta',
-      price: 80000, 
+      price: 80000,
       description: 'bla bla bla bla bla'
     },
     {
