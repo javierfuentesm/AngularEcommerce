@@ -1,9 +1,26 @@
-<h3 appHighlight>{{ product.title | uppercase }}</h3>
-<img src="{{product.image}}" />
-<h3>{{ product.price | currency }}</h3>
-<strong>{{ product.description | slice: 0:10 }}</strong>
-<p>{{ today | date: "medium" }}</p>
-<br />
-<a routerLink="./{{product.id}}">Ver Detalle</a>
-<br>
-<button (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{ product.title | uppercase }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ product.price | currency }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="crop-image">
+    <img src="{{ product.image }}" />
+  </div>
+  <mat-card-content>
+    <p>
+      {{ product.description | slice: 0:10 }}
+    </p>
+    <p>{{ today | date: "medium" }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button routerLink="./{{ product.id }}">Ver Detalle</a>
+
+    <button (click)="addCart()" mat-raised-button color="primary">
+      Agregar al carrito
+    </button>
+  </mat-card-actions>
+</mat-card>
