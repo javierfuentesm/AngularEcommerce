@@ -14,9 +14,14 @@ export class ProductsComponent implements OnInit {
   clickedProduct(id: number) {
     console.log(`producto ${id}`);
   }
+  fetchProducts() {
+   this.productsService
+      .getAllProducts()
+      .subscribe(products => this.products = products);
+  }
 
   ngOnInit() {
-    this.products = this.productsService.getAllProducts();
+    this.fetchProducts();
     console.log(this.products);
   }
 }
