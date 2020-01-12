@@ -29,4 +29,19 @@ export class ProductDetailComponent implements OnInit {
       .getProduct(id)
       .subscribe(product => (this.product = product));
   }
+  createProduct(){
+    const newProduct:Product = {
+      id : '222',
+      title: 'nuevo',
+      image: 'assets/images/banner-1.jpg',
+      price: 3000,
+      description: 'nuevo producto'
+
+    };
+
+    this.productsService
+    .createProduct(newProduct)
+    .subscribe(product => (console.log(product)));
+
+  }
 }
