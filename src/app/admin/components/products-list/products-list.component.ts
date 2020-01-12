@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../core/services/products/products.service';
-import {Product} from '../../../product.model';
+import { Product } from '../../../product.model';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -22,9 +22,12 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(deletedProduct: Product) {
-    this.productService.deleteProduct(deletedProduct.id).subscribe((res) => {
-      res ? this.fetchProducts() : console.log(res);
-
+    this.productService.deleteProduct(deletedProduct.id).subscribe(res => {
+      if (res) {
+        this.products = this.products.filter(
+          (product: Product) => product.id !== deletedProduct.id
+        );
+      }
     });
   }
 }
