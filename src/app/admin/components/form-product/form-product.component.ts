@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {ProductsService } from '../../../core/services/products/products.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import { ProductsService } from '../../../core/services/products/products.service';
+import { MyValidators } from '../../../utils/validators';
 @Component({
   selector: 'app-form-product',
   templateUrl: './form-product.component.html',
   styleUrls: ['./form-product.component.scss']
 })
 export class FormProductComponent implements OnInit {
-
   form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -18,10 +16,9 @@ export class FormProductComponent implements OnInit {
     private router: Router
   ) {
     this.buildForm();
-   }
-
-  ngOnInit() {
   }
+
+  ngOnInit() {}
 
   saveProduct(event: Event) {
     event.preventDefault();
@@ -34,13 +31,13 @@ export class FormProductComponent implements OnInit {
     }
     console.log(this.form.value);
   }
-  private buildForm() {this.form = this.formBuilder.group({
-    id: ['', Validators.required],
-    title: ['', Validators.required],
-    price: ['', Validators.required],
-    description: ['', Validators.required],
-    image: [''],
-  });
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      id: ['', Validators.required],
+      title: ['', Validators.required],
+      price: ['', [Validators.required, MyValidators.isPriceValid]],
+      description: ['', Validators.required],
+      image: ['']
+    });
   }
-
 }
