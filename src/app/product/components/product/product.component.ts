@@ -10,13 +10,16 @@ import {
   OnDestroy
 } from '@angular/core';
 import { Product } from '../../../product.model';
+import { CartService } from '../../../core/services/cart.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit, DoCheck, OnDestroy {
-  constructor() {
+  constructor(
+    private cartService: CartService
+  ) {
     console.log('contructor');
   }
   @Input() product: Product;
@@ -38,6 +41,7 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   addCart() {
-    this.productClicked.emit(this.product.id);
+    //this.productClicked.emit(this.product.id);
+    this.cartService.addCart(this.product);
   }
 }
